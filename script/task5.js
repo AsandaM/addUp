@@ -2,20 +2,22 @@ let input = document.querySelector('input')
 let answer = document.querySelectorAll('p')[1]
 let button = document.querySelector('button')
 
-let array = [1,2,3,4]
 
-let sum =  0
-
-array.forEach(addUp)
-function addUp(item) {
-    sum += item
-}
- console.log(sum);
+let sum = 0
 
 function calc() {
-    let arr = [input.innerText].split(',').reduce((total, current) =>{
-        return total + +current
-    }, 0)
+    let inputValues = input.value.split(',').map(Number)
+
+    inputValues.forEach(add)
+    function add(item) {
+        sum += item
+
+        
+    }
+    answer.innerText += ' ' + sum
 }
 
-button.addEventListener('click', calc)
+button.addEventListener('click', ()=>{
+    calc()
+    input.value = ' '
+})
